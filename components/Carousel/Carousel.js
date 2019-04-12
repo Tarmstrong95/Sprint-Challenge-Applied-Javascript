@@ -1,6 +1,7 @@
 class Carousel {
 constructor(elements){
     this.elements = elements;
+    this.btns = this.elements.querySelectorAll('.btn')
     this.leftBtn = this.elements.querySelector('.left-button');
     this.rightBtn = this.elements.querySelector('.right-button');
     this.imgs = this.elements.querySelectorAll('img');
@@ -8,7 +9,7 @@ constructor(elements){
 
     this.leftBtn.addEventListener('click', () => this.left());
     this.rightBtn.addEventListener('click', () => this.right())
-    this.imgs[1].style.display = "block";
+    this.imgs[this.current].style.display = "block";
 }
 right(){
     this.current <3 ? this.current += 1 : this.current = 0;
@@ -21,8 +22,11 @@ left(){
     this.currentImg();
 }
 currentImg(){
-    this.imgs.forEach(element => element.style.display = 'none');
+    this.imgs.forEach(element => {
+        element.style.display = 'none';
+    });
     this.imgs[this.current].style.display = "block";
+
 }
 }
 
